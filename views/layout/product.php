@@ -1,13 +1,18 @@
+<?php
+
+    require_once './../source/database.php';
+
+?>
 <ul class="products">
+<?php foreach ($result as $product) : ?>
     <li class="products__product">
         <header class="product__header">
-            <h3 class="product__h3">Taart</h3>
+            <h3 class="product__h3"><?php echo $product['title'];?></h3>
         </header>
         <figure class="product__figure">
-            <img src="" alt="" class="product__img">
+            <img src="img/<?php echo $product['img']; ?>" alt="" class="product__img">
         </figure>
-        <p class="product__paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt molestiae ullam
-            quasi ut modi, commodi corporis animi perspiciatis unde quos laudantium, quisquam harum illo? Earum incidunt
-            eius amet aperiam sint?</p>
+        <p class="product__paragraph"><?php echo $product['intro']; ?></p>
     </li>
+    <?php endforeach; ?>
 </ul>

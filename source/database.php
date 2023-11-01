@@ -1,21 +1,10 @@
 <?php
 $servername = "mariadb";
-$user = "exampleuser";
+$username = "exampleuser";
 $password = "examplepass";
-$db = "products";
+$dbname = "products";
 
-$dateTime = new DateTime();
-$dateNow = $dateTime->format('Y-m-d H:i:s');
-
-try {
-    $conn = new PDO("mysql:host=$servername;port=3306;dbname=$db", $user, $password);
-    $statement = $conn->prepare("INSERT INTO users(name, email, date, active) VALUES(:name, :email, :date, :active)");
-    $statement->execute([
-        "name" => $name,
-        "email" => $email,
-        "date" => $dateNow,
-        "active" => 0,
-    ]);
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
+$connection = new mysqli($servername, $username, $password, $dbname);
+$query      = 'SELECT * FROM appleProducts ORDER BY id';
+$result     = $connection->query($query);
+$item       = $result->fetch_assoc();

@@ -12,6 +12,7 @@
 <body>
     <main class="main">
         <?php
+        require './../source/database.php';
         require './../views/layout/header.php';
         require './../views/layout/product.php';
         ?>
